@@ -92,29 +92,36 @@ $(document).ready(function () {
   };
 
   const fetchCurrentPrice = () => {
-    console.log("fetchCurrentPrice");
-    // $.ajax({
-    //   url: "https://api.mexc.com/api/v3/ticker/price?symbol=AINUSDT",
-    //   header: {
-    //     "Access-Control-Allow-Origin": "*"
-    //   },
-    //   // mode: "no-cors",
-    //   method: "GET",
-    //   success: (data) => {
-    //     const container = $(".intro-desc2-price");
-    //     console.log(data);
-    //     // currentPrice = data["price"];
-    //     container.html(`<span>Now: ₩ ${addCommas(currentPrice)}</span>`);
-    //     $("#price").attr(
-    //       "placeholder",
-    //       `Current Price: ₩ ${addCommas(currentPrice)}`
-    //     );
-    //     fetchSpreadSheet(currentPrice);
-    //   },
-    //   error: () => {
-    //     alert("데이터를 불러올 수 없습니다. 잠시 후에 다시 시도해주세요.");
-    //   }
+    // fetch("https://api.mexc.com/api/v3/ticker/price?symbol=AINUSDT", {
+    //   // header: {
+    //   //   "Access-Control-Allow-Origin": "*"
+    //   // },
+    //   mode: "same-origin"
+    // }).then((res) => {
+    //   console.log(res);
     // });
+    $.ajax({
+      url: "https://test.daground.io/event/price",
+      header: {
+        "test-auth": "sandbankfrontend"
+      },
+      mode: "no-cors",
+      method: "GET",
+      success: (data) => {
+        const container = $(".intro-desc2-price");
+        console.log(data);
+        // currentPrice = data["AINUSDT"];
+        container.html(`<span>Now: ₩ ${addCommas(currentPrice)}</span>`);
+        $("#price").attr(
+          "placeholder",
+          `Current Price: ₩ ${addCommas(currentPrice)}`
+        );
+        fetchSpreadSheet(currentPrice);
+      },
+      error: () => {
+        alert("데이터를 불러올 수 없습니다. 잠시 후에 다시 시도해주세요.");
+      }
+    });
   };
 
   function fetchData() {
