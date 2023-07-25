@@ -105,7 +105,6 @@ $(document).ready(function () {
       header: {
         "test-auth": "sandbankfrontend"
       },
-      mode: "no-cors",
       method: "GET",
       success: (data) => {
         const container = $(".intro-desc2-price");
