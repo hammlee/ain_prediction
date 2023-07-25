@@ -1,0 +1,295 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coin Price Expectation</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="header mb-5">
+        <div class="logos mb-2 text-center">
+          <img class="logo" src="white.png" alt="" />
+          <i class="fas fa-times icon-cross"></i>
+          <img class="logo" src="nextrise.png" alt="" />
+        </div>
+        <!-- 언어 변경 버튼 -->
+        <div class="translate-btns">
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            onclick="changeLanguage('en')"
+          >
+            ENGLISH
+          </button>
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            onclick="changeLanguage('ko')"
+          >
+            KOREAN
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div id="left-side" class="col-md-7">
+          <h1 class="intro-title text-center mb-4" data-translate="title"></h1>
+          <div class="intro-desc1 mb-4">
+            <span class="intro-desc1-time" data-translate="intro-desc1-time">
+            </span>
+            <span
+              class="intro-desc1 text-center"
+              data-translate="intro-desc1"
+            ></span>
+            <br />
+            <span
+              class="intro-desc1 text-center mb-5"
+              data-translate="intro-desc2"
+            ></span>
+          </div>
+          <div class="intro-desc2 mb-2">
+            <h2 class="intro-desc2-price text-center"></h2>
+            <p
+              class="intro-desc2-warning"
+              data-translate="intro-desc2-warning"
+            ></p>
+          </div>
+          <div class="tradingview-widget-container">
+            <div id="tradingview_91d31"></div>
+          </div>
+        </div>
+        <div id="right-side" class="col-md-5 text-center">
+          <div class="status-header">
+            <h2
+              class="status-header-title text-center mb-5"
+              data-translate="status-header-title"
+            ></h2>
+            <div class="status-header-refresh">
+              <i class="fas fa-sync"></i>
+            </div>
+          </div>
+          <div class="status-field row">
+            <div class="col-md-3">
+              <h5
+                class="status-field-rank card-title"
+                data-translate="status-field-rank"
+              ></h5>
+            </div>
+            <div class="col-md-5">
+              <h5
+                class="status-field-price card-title"
+                data-translate="status-field-price"
+              ></h5>
+            </div>
+            <div class="col-md-4">
+              <h5
+                class="status-field-phone card-title"
+                data-translate="status-field-phone"
+              ></h5>
+            </div>
+          </div>
+          <div class="status-result"></div>
+        </div>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary floating-button"
+      data-toggle="modal"
+      data-target="#myModal"
+      data-translate="floating-button"
+    ></button>
+
+    <!-- 모달 창 -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content event-form">
+          <div class="modal-header text-center">
+            <h4
+              class="modal-title text-center"
+              id="myModalLabel"
+              data-translate="myModalLabel"
+            ></h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="event-detail mb-3">
+              <span data-translate="event-detail1"></span>
+              <br /><br />
+              <span data-translate="event-detail2"></span>
+              <br /><br />
+              <span data-translate="event-detail3"></span>
+              <br />
+              <span data-translate="event-detail4"></span>
+              <br />
+              <span data-translate="event-detail5"></span>
+              <br />
+              <span data-translate="event-detail6"></span>
+              <br /><br />
+              <span data-translate="event-detail7"></span>
+              <br /><br />
+              <span data-translate="event-detail8"></span>
+              <br />
+            </div>
+            <form
+              action="https://script.google.com/macros/s/AKfycbzgniD-l-YDreT1vjIZ1C_LJtDQZPBQVcv4AEIF4Zg1043yvQS5Qa7M0WdK0uXbTzlF/exec?function=doPost"
+              method="post"
+            >
+              <div class="form-group">
+                <label
+                  class="event-form-list"
+                  for="phone"
+                  data-translate="event-form-list-phone"
+                ></label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                  placeholder="ex) 01012345678"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="event-form-list"
+                  for="price"
+                  data-translate="event-form-list-price"
+                ></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="price"
+                  name="price"
+                  required
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                  placeholder=""
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="event-form-list"
+                  for="email"
+                  data-translate="event-form-list-email"
+                ></label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="ex) name@example.com"
+                />
+              </div>
+              <div class="accordion">
+                <div class="accordion-item">
+                  <div class="accordion-header">
+                    <span data-translate="event-warning-title"></span>
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                  <div class="accordion-content">
+                    <span data-translate="event-warning-detail1"></span>
+                    <br />
+                    <br />
+                    <span data-translate="event-warning-detail2"></span>
+                    <br />
+                    <span data-translate="event-warning-detail3"></span>
+                    <br />
+                    <span data-translate="event-warning-detail4"></span>
+                    <br />
+                    <br />
+                    <span data-translate="event-warning-detail5"></span>
+                    <br />
+                    <span data-translate="event-warning-detail6"></span>
+                    <br />
+                    <br />
+                    <span data-translate="event-warning-detail7"></span>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary mt-3"
+                id="submit-form"
+              >
+                <span id="submit-text" data-translate="event-submit"></span>
+                <i id="submit-spinner" class="fas fa-spinner fa-spin"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- jQuery 파일 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- 부트스트랩 JS 파일 -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://s3.tradingview.com/tv.js"
+  ></script>
+  <script src="main.js"></script>
+  <script src="i18n.js"></script>
+  <script type="text/javascript">
+    let main = document.querySelector("#left-side");
+    let width = main.offsetWidth - 20;
+    let height = main.offsetHeight + 200;
+
+    new TradingView.widget({
+      width: width,
+      height: height,
+      symbol: "MEXC:AINUSDT",
+      interval: "5",
+      timezone: "Etc/UTC",
+      theme: "dark",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#f1f3f6",
+      enable_publishing: false,
+      allow_symbol_change: true,
+      container_id: "tradingview_91d31"
+    });
+  </script>
+  <script>
+    i18n.init({
+      lng: "ko", // 기본 언어 설정
+      resources: {}
+    });
+
+    // JSON 파일 로드
+    fetch("script.json")
+      .then((response) => response.json())
+      .then((data) => {
+        i18n.resources = data;
+        i18n.applyTranslation();
+      })
+      .catch((error) => {
+        console.error("리소스를 로드하는 중 오류가 발생했습니다:", error);
+      });
+  </script>
+</html>
