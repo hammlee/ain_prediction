@@ -94,8 +94,8 @@ $(document).ready(function () {
 
   const fetchCurrentPrice = () => {
     $.ajax({
-      // url: "https://test.daground.io/event/price",
-      url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=KRW&e=Upbit",
+      url: "https://test.daground.io/event/price",
+      // url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=KRW&e=Upbit",
       header: {
         "test-auth": "sandbankfrontend"
       },
