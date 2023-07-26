@@ -172,7 +172,7 @@ $(document).ready(function () {
         success: (data) => {
           submitSpinner.css("display", "none");
           submitText.css("display", "inline");
-          submitText.text("참여 완료!");
+          submitText.text("Success!");
           location.reload();
         }
       });
