@@ -5,7 +5,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coin Price Expectation</title>
+    <title>The $AIN Price Prediction Challenge</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -17,13 +18,10 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container mt-5">
-      <div class="header mb-5">
-        <div class="logos mb-2 text-center">
-          <img class="logo" src="white.png" alt="" />
-          <i class="fas fa-times icon-cross"></i>
-          <img class="logo" src="nextrise.png" alt="" />
-        </div>
+    <div class="container mt-3 mb-5">
+      <!-- Header -->
+      <div class="header mb-4">
+        <img class="logo" src="combination_violet.png" alt="" />
         <!-- 언어 변경 버튼 -->
         <div class="translate-btns">
           <button
@@ -40,37 +38,89 @@
           </button>
         </div>
       </div>
-      <div class="row">
-        <div id="left-side" class="col-md-7">
-          <h1 class="intro-title text-center mb-4" data-translate="title"></h1>
-          <div class="intro-desc1 mb-4">
-            <span class="intro-desc1-time" data-translate="intro-desc1-time">
-            </span>
-            <span
-              class="intro-desc1 text-center"
-              data-translate="intro-desc1"
-            ></span>
-            <br />
-            <span
-              class="intro-desc1 text-center mb-5"
-              data-translate="intro-desc2"
-            ></span>
-          </div>
-          <div class="intro-desc2 mb-2">
-            <h2 class="intro-desc2-price text-center"></h2>
-            <p
-              class="intro-desc2-warning"
-              data-translate="intro-desc2-warning"
-            ></p>
-          </div>
-          <div class="tradingview-widget-container">
-            <div id="tradingview_91d31"></div>
+      <!-- Intro -->
+      <div class="intro">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h1 class="intro-title mb-3" data-translate="title"></h1>
+            <div class="intro-subtitle mb-4">
+              <p class="intro-subtitle1" data-translate="intro-subtitle1"></p>
+              <p class="intro-subtitle2" data-translate="intro-subtitle2"></p>
+            </div>
+            <div class="intro-info">
+              <p class="intro-info-time" data-translate="intro-info-time"></p>
+              <p
+                class="intro-info-target"
+                data-translate="intro-info-target"
+              ></p>
+              <p
+                class="intro-info-reward"
+                data-translate="intro-info-reward"
+              ></p>
+            </div>
           </div>
         </div>
-        <div id="right-side" class="col-md-5 text-center">
+        <div class="row">
+          <div id="left-side text-left" class="col-md-6">
+            <p
+              class="intro-info-desc mb-4"
+              data-translate="intro-info-desc"
+            ></p>
+            <div class="intro-play mb-4">
+              <p class="intro-play-title" data-translate="intro-play-title"></p>
+              <p
+                class="intro-play-content"
+                data-translate="intro-play-content1"
+              ></p>
+              <p
+                class="intro-play-content"
+                data-translate="intro-play-content2"
+              ></p>
+              <p
+                class="intro-play-content"
+                data-translate="intro-play-content3"
+              ></p>
+            </div>
+            <div class="intro-reward">
+              <p
+                class="intro-reward-title"
+                data-translate="intro-reward-title"
+              ></p>
+              <p
+                class="intro-reward-content mb-2"
+                data-translate="intro-reward-content1"
+              ></p>
+              <p
+                class="intro-reward-content"
+                data-translate="intro-reward-content2"
+              ></p>
+              <p
+                class="intro-reward-content"
+                data-translate="intro-reward-content3"
+              ></p>
+              <p
+                class="intro-reward-content"
+                data-translate="intro-reward-content4"
+              ></p>
+            </div>
+          </div>
+          <div id="right-side" class="col-md-6">
+            <div class="mb-6 text-center">
+              <h2 class="intro-price"></h2>
+              <p class="intro-warning" data-translate="intro-warning"></p>
+            </div>
+            <div class="tradingview-widget-container">
+              <div id="tradingview_91d31"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Status -->
+      <div class="row status">
+        <div class="col-md-12 text-center">
           <div class="status-header">
             <h2
-              class="status-header-title text-center mb-5"
+              class="status-header-title mb-5"
               data-translate="status-header-title"
             ></h2>
             <div class="status-header-refresh">
@@ -92,8 +142,8 @@
             </div>
             <div class="col-md-4">
               <h5
-                class="status-field-phone card-title"
-                data-translate="status-field-phone"
+                class="status-field-address card-title"
+                data-translate="status-field-address"
               ></h5>
             </div>
           </div>
@@ -136,42 +186,52 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="event-detail mb-3">
-              <span data-translate="event-detail1"></span>
-              <br /><br />
-              <span data-translate="event-detail2"></span>
-              <br /><br />
-              <span data-translate="event-detail3"></span>
-              <br />
-              <span data-translate="event-detail4"></span>
-              <br />
-              <span data-translate="event-detail5"></span>
-              <br />
-              <span data-translate="event-detail6"></span>
-              <br /><br />
-              <span data-translate="event-detail7"></span>
-              <br /><br />
-              <span data-translate="event-detail8"></span>
-              <br />
+            <div class="modal-play mb-4">
+              <p class="modal-play-title" data-translate="intro-play-title"></p>
+              <p
+                class="modal-play-content"
+                data-translate="intro-play-content1"
+              ></p>
+              <p
+                class="modal-play-content"
+                data-translate="intro-play-content2"
+              ></p>
+              <p
+                class="modal-play-content"
+                data-translate="intro-play-content3"
+              ></p>
             </div>
             <form
-              action="https://script.google.com/macros/s/AKfycbzgniD-l-YDreT1vjIZ1C_LJtDQZPBQVcv4AEIF4Zg1043yvQS5Qa7M0WdK0uXbTzlF/exec?function=doPost"
+              action="https://script.google.com/macros/s/AKfycbzr6oJR_KU5Q2Be7JOUPVGfTGtB-T_y8zoCUrVhMwIbnG4ExC2E1lX5qigAEcSlwrKw/exec?function=doPost"
               method="post"
             >
               <div class="form-group">
                 <label
                   class="event-form-list"
-                  for="phone"
-                  data-translate="event-form-list-phone"
+                  for="address"
+                  data-translate="event-form-list-address"
                 ></label>
                 <input
-                  type="tel"
                   class="form-control"
-                  id="phone"
-                  name="phone"
+                  id="address"
+                  name="address"
                   required
-                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                  placeholder="ex) 01012345678"
+                  placeholder="AIN HOLDER ADDRESS(ERC-20)"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="event-form-list"
+                  for="discord"
+                  data-translate="event-form-list-discord"
+                ></label>
+                <input
+                  type="discord"
+                  class="form-control"
+                  id="discord"
+                  name="discord"
+                  required
+                  placeholder="DISCORD ID"
                 />
               </div>
               <div class="form-group">
@@ -186,23 +246,7 @@
                   id="price"
                   name="price"
                   required
-                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                   placeholder=""
-                />
-              </div>
-              <div class="form-group">
-                <label
-                  class="event-form-list"
-                  for="email"
-                  data-translate="event-form-list-email"
-                ></label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="ex) name@example.com"
                 />
               </div>
               <div class="accordion">
@@ -256,7 +300,7 @@
   <script src="main.js"></script>
   <script src="i18n.js"></script>
   <script type="text/javascript">
-    let main = document.querySelector("#left-side");
+    let main = document.querySelector("#right-side");
     let width = main.offsetWidth - 20;
     let height = main.offsetHeight + 200;
 
@@ -264,7 +308,7 @@
       width: width,
       height: height,
       symbol: "MEXC:AINUSDT",
-      interval: "5",
+      interval: "60",
       timezone: "Etc/UTC",
       theme: "dark",
       style: "1",
@@ -277,7 +321,7 @@
   </script>
   <script>
     i18n.init({
-      lng: "ko", // 기본 언어 설정
+      lng: "en", // 기본 언어 설정
       resources: {}
     });
 

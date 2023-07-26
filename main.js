@@ -18,16 +18,16 @@ $(document).ready(function () {
 
   // 모달 닫기 함수
   function closeModal() {
-    $("#phone").val("");
+    $("#address").val("");
     $("#price").val("");
-    $("#email").val("");
+    $("#discord").val("");
   }
 
   // 데이터 페치 함수
   let currentPrice;
   const fetchSpreadSheet = (currentPrice) => {
     $.ajax({
-      url: "https://script.google.com/macros/s/AKfycbzgniD-l-YDreT1vjIZ1C_LJtDQZPBQVcv4AEIF4Zg1043yvQS5Qa7M0WdK0uXbTzlF/exec",
+      url: "https://script.google.com/macros/s/AKfycbzr6oJR_KU5Q2Be7JOUPVGfTGtB-T_y8zoCUrVhMwIbnG4ExC2E1lX5qigAEcSlwrKw/exec",
       success: (data) => {
         if (data.length === 0) {
           cardContainer.html(
@@ -45,7 +45,7 @@ $(document).ready(function () {
         cardContainer.empty();
         const container = $(".status-result");
         data.map((result, index) => {
-          const phone = String(result.phone); // 문자열로 변환
+          const address = String(result.address); // 문자열로 변환
           const card = `
         <div class="card">
           <div class="card-body">
@@ -61,7 +61,7 @@ $(document).ready(function () {
               </div>
               <div class="col-md-5 event-price">
                 <p class="card-text" id="result-rank">
-                ₩ ${addCommas(result.price)}</p>
+                $ ${addCommas(result.price)}</p>
                 <p class="card-text card-text-sub" id="result-rank">
                   (${
                     result.price > currentPrice
@@ -71,10 +71,11 @@ $(document).ready(function () {
             Math.abs(result.price - currentPrice)
           )})</p>
               </div>
-              <div class="col-md-4 event-phone">
-                <p class="card-text" id="result-rank">${
-                  phone.slice(-4) || phone
-                }</p>
+              <div class="col-md-4 event-address">
+                <p class="card-text" id="result-rank">${address.slice(
+                  0,
+                  4
+                )}……${address.slice(-4)}</p>
               </div>
             </div>
           </div>
@@ -92,28 +93,21 @@ $(document).ready(function () {
   };
 
   const fetchCurrentPrice = () => {
-    // fetch("https://api.mexc.com/api/v3/ticker/price?symbol=AINUSDT", {
-    //   // header: {
-    //   //   "Access-Control-Allow-Origin": "*"
-    //   // },
-    //   mode: "same-origin"
-    // }).then((res) => {
-    //   console.log(res);
-    // });
     $.ajax({
-      url: "https://test.daground.io/event/price",
+      // url: "https://test.daground.io/event/price",
+      url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=KRW&e=Upbit",
       header: {
         "test-auth": "sandbankfrontend"
       },
       method: "GET",
       success: (data) => {
-        const container = $(".intro-desc2-price");
+        const container = $(".intro-price");
         console.log(data);
-        // currentPrice = data["AINUSDT"];
-        container.html(`<span>Now: ₩ ${addCommas(currentPrice)}</span>`);
+        currentPrice = data["BTC"]["KRW"];
+        container.html(`<span>AIN/USDT: ${addCommas(currentPrice)}</span>`);
         $("#price").attr(
           "placeholder",
-          `Current Price: ₩ ${addCommas(currentPrice)}`
+          `Current Price: ${addCommas(currentPrice)}`
         );
         fetchSpreadSheet(currentPrice);
       },
@@ -146,14 +140,8 @@ $(document).ready(function () {
   function setupInputHandlers() {
     $("#price").on("input", function () {
       const value = $(this).val();
-      if (value.length > 9) {
-        $(this).val(value.slice(0, 9));
-      }
-    });
-    $("#phone").on("input", function () {
-      const value = $(this).val();
-      if (value.length > 11) {
-        $(this).val(value.slice(0, 11));
+      if (value.length > 10) {
+        $(this).val(value.slice(0, 10));
       }
     });
   }
@@ -173,7 +161,7 @@ $(document).ready(function () {
       submitSpinner.css("display", "block");
 
       $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbzgniD-l-YDreT1vjIZ1C_LJtDQZPBQVcv4AEIF4Zg1043yvQS5Qa7M0WdK0uXbTzlF/exec",
+        url: "https://script.google.com/macros/s/AKfycbzr6oJR_KU5Q2Be7JOUPVGfTGtB-T_y8zoCUrVhMwIbnG4ExC2E1lX5qigAEcSlwrKw/exec",
         method: "POST",
         data: $("form").serialize(),
         success: (data) => {

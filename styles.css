@@ -14,8 +14,8 @@ body {
   background: #000;
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.65)
     ),
     url("bg.jpg");
   background-repeat: no-repeat;
@@ -51,31 +51,7 @@ body {
   transition: opacity 0.3s ease-out;
 }
 
-/* 헤더 */
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  z-index: 100;
-}
-/* .logos {
-  padding-left: 80px;
-} */
-.logo {
-  max-width: 200px;
-}
-.icon-cross {
-  width: 25px;
-}
-
-/* Left Side */
-#left-side {
-  padding-right: 50px;
-  text-align: center;
-}
+/* Common */
 .card {
   margin: 15px auto;
   border-radius: 5px;
@@ -97,42 +73,83 @@ body {
   margin: 0 auto;
   border-radius: 4px;
 }
-.status-field {
+
+/* Header */
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid #dee2e6;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 100;
+}
+.logo {
+  max-width: 250px;
+}
+
+/* Intro */
+.intro {
+  margin-bottom: 60px;
 }
 .intro-title {
   font-size: 40px;
   font-weight: 700;
-  color: rgb(1, 124, 255);
+  /* color: rgb(1, 124, 255); */
+  color: #7f4fe8;
   margin-bottom: 10px;
 }
-.intro-desc1 {
-  font-size: 16px;
-  color: #fff;
+.intro-subtitle1,
+.intro-subtitle2 {
+  color: #dee2e6;
 }
-.intro-desc1-time {
+
+/* Intro - Left Side */
+#left-side {
+  padding-right: 50px;
+  text-align: center;
+}
+.intro-info {
+  margin-bottom: 60px;
+}
+.intro-info-time,
+.intro-info-target,
+.intro-info-reward {
   font-size: 24px;
   font-weight: 700;
 }
-.intro-desc2-warning {
+.intro-play,
+.intro-reward {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.intro-play-title,
+.intro-reward-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Intro - Right Side */
+#right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.intro-warning {
   font-size: 11px;
   font-weight: 400;
   color: #fff;
 }
-.intro-desc2-price {
+.intro-price {
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 3px;
 }
 
-/* Right Side */
-#right-side {
-  padding-left: 50px;
-  margin-bottom: 100px;
-}
+/* Status */
 .status-header {
   position: relative;
 }
@@ -144,6 +161,12 @@ body {
 }
 .status-header-refresh:hover {
   color: rgb(1, 124, 255);
+}
+.status-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #dee2e6;
 }
 .fa-caret-up {
   color: red;
@@ -157,6 +180,18 @@ body {
 /* 모달 */
 .modal-title {
   font-weight: 700;
+}
+.modal-play,
+.modal-reward {
+  background-color: aliceblue;
+  padding: 15px;
+  font-size: 14px;
+}
+.modal-play-title,
+.modal-reward-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 .event-form {
   color: #000;
@@ -176,7 +211,7 @@ body {
   font-weight: 700;
 }
 .event-rank,
-.event-phone {
+.event-address {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -235,6 +270,7 @@ body {
 #submit-spinner {
   display: none;
 }
+
 @media (min-width: 1500px) {
   .container {
     max-width: 1400px;
@@ -256,7 +292,7 @@ body {
   .intro-title {
     font-size: 30px;
   }
-  .intro-desc2-price {
+  .intro-price {
     font-size: 24px;
   }
   .logos {
