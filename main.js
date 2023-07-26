@@ -61,13 +61,13 @@ $(document).ready(function () {
               </div>
               <div class="col-md-5 event-price">
                 <p class="card-text" id="result-rank">
-                $ ${addCommas(result.price)}</p>
+                $ ${formatNumber(result.price)}</p>
                 <p class="card-text card-text-sub" id="result-rank">
                   (${
                     result.price > currentPrice
                       ? `<i class="fas fa-caret-up"></i>`
                       : `<i class="fas fa-caret-down"></i>`
-                  }${"  "}${addCommas(
+                  }${"  "}${formatNumber(
             Math.abs(result.price - currentPrice)
           )})</p>
               </div>
@@ -95,19 +95,17 @@ $(document).ready(function () {
   const fetchCurrentPrice = () => {
     $.ajax({
       url: "https://test.daground.io/event/price",
-      // url: "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=KRW&e=Upbit",
-      header: {
+      headers: {
         "test-auth": "sandbankfrontend"
       },
       method: "GET",
       success: (data) => {
         const container = $(".intro-price");
-        console.log(data);
-        currentPrice = data["BTC"]["KRW"];
-        container.html(`<span>AIN/USDT: ${addCommas(currentPrice)}</span>`);
+        currentPrice = data["price"];
+        container.html(`<span>AIN/USDT: ${formatNumber(currentPrice)}</span>`);
         $("#price").attr(
           "placeholder",
-          `Current Price: ${addCommas(currentPrice)}`
+          `Current Price: ${formatNumber(currentPrice)}`
         );
         fetchSpreadSheet(currentPrice);
       },
@@ -130,9 +128,16 @@ $(document).ready(function () {
   }
 
   // 콤마 입력 합수
-  function addCommas(number) {
-    const parts = number.toString().split(".");
+  function formatNumber(num) {
+    // 소수점 6자리까지 남기고, 나머지는 반올림
+    num = +(Math.round(num + "e+8") + "e-8");
+    // 숫자를 문자열로 변환
+    let str = num.toString();
+    // 정수 부분과 소수 부분으로 나눔
+    let parts = str.split(".");
+    // 정수 부분에 콤마 추가
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // 다시 합쳐서 반환
     return parts.join(".");
   }
 
