@@ -117,7 +117,7 @@ $(document).ready(function () {
 
   function fetchData() {
     fetchCurrentPrice();
-    // setInterval(fetchCurrentPrice, 10000);
+    setInterval(fetchCurrentPrice, 5000);
   }
 
   // 로딩 텍스트 표시 함수
