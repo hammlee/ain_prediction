@@ -131,6 +131,10 @@ body {
   font-weight: 700;
   margin-bottom: 10px;
 }
+.intro-play-content,
+.intro-reward-content {
+  padding-left: 15px;
+}
 
 /* Intro - Right Side */
 #right-side {
@@ -192,6 +196,9 @@ body {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
+}
+.modal-play-content {
+  padding-left: 15px;
 }
 .event-form {
   color: #000;
