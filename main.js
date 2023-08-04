@@ -215,7 +215,7 @@ $(document).ready(function () {
     });
   }
 
-  setupFormSubmitHandler();
+  // setupFormSubmitHandler();
   setupRefreshHandler();
   setupAccordionHandlers();
 });

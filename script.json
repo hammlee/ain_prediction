@@ -1,7 +1,7 @@
 {
   "ko": {
     "translation": {
-      "floating-button": "참여하기",
+      "floating-button": "이벤트가 마감되었습니다",
       "title": "아인 가격 예측 컨테스트 🚀",
       "intro-subtitle1": "기한은 단 1주일, $AIN의 가격이 변한다.",
       "intro-subtitle2": "$600 상당의 아인 토큰, 그 대망의 주인공은?",
@@ -44,7 +44,7 @@
   },
   "en": {
     "translation": {
-      "floating-button": "Join Challenge",
+      "floating-button": "This event has ended",
       "title": "🚀 The $AIN Price Prediction Challenge",
       "intro-subtitle1": "Win Total $600 USD Worth of $AIN Tokens in Just 1 Week!",
       "intro-subtitle2": "",
